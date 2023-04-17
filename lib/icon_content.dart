@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
-
-const fontAwesomeColor = Color(0xFF8D8E98);
+import 'package:bmi_calculator/constants.dart';
 
 class IconContent extends StatelessWidget {
 
@@ -16,7 +15,7 @@ class IconContent extends StatelessWidget {
         Icon(
           icon,
           size: 80.0,
-          color: fontAwesomeColor,
+          color: fontAwesomeSignColor,
         ),
         SizedBox(
           height: 15.0,
