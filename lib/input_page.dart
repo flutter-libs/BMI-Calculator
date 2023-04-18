@@ -3,6 +3,10 @@ import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:bmi_calculator/reusable_card.dart';
 import 'package:bmi_calculator/icon_content.dart';
 import 'package:bmi_calculator/constants.dart';
+import 'package:bmi_calculator/round_icon_button.dart';
+import 'package:bmi_calculator/results_page.dart';
+import 'package:bmi_calculator/bottom_button.dart';
+
 
 enum Gender {
   male,
@@ -17,6 +21,8 @@ class InputPage extends StatefulWidget {
 class _InputPageState extends State<InputPage> {
   Gender? selectedGender;
   int height = 180;
+  int weight = 60;
+  int age = 20;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -131,36 +137,101 @@ class _InputPageState extends State<InputPage> {
                     onPress: () {},
                     color: activeCardColor,
                     cardChild: Column(
+                      mainAxisAlignment: MainAxisAlignment.center,
                       children: <Widget>[
-
+                        Text(
+                          'WEIGHT',
+                          style: TextStyle(
+                            color: fontAwesomeColor,
+                          ),
+                        ),
+                        Text(
+                          weight.toString(),
+                          style: numberTextStyle,
+                        ),
+                        Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                          crossAxisAlignment: CrossAxisAlignment.center,
+                          children: [
+                            RoundIconButton(
+                              icon: FontAwesomeIcons.minus,
+                              onPressed: () {
+                                setState(() {
+                                  weight--;
+                                });
+                              },
+                            ),
+                            RoundIconButton(
+                              icon: FontAwesomeIcons.plus,
+                              onPressed: () {
+                                setState(() {
+                                  weight++;
+                                });
+                              },
+                            ),
+                          ],
+                        ),
                       ],
                     )
                   ),
                 ),
                 Expanded(
                   child: ReusableCard(
-                    onPress: () {},
-                    color: activeCardColor,
-                    cardChild: Column(
-                      children: <Widget>[
-
-                      ],
-                    ),
-                   ),
-                )
+                      onPress: () {},
+                      color: activeCardColor,
+                      cardChild: Column(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: <Widget>[
+                          Text(
+                            'AGE',
+                            style: TextStyle(
+                              color: fontAwesomeColor,
+                            ),
+                          ),
+                          Text(
+                            age.toString(),
+                            style: numberTextStyle,
+                          ),
+                          Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                            crossAxisAlignment: CrossAxisAlignment.center,
+                            children: [
+                              RoundIconButton(
+                                icon: FontAwesomeIcons.minus,
+                                onPressed: () {
+                                  setState(() {
+                                    age--;
+                                  });
+                                },
+                              ),
+                              RoundIconButton(
+                                icon: FontAwesomeIcons.plus,
+                                onPressed: () {
+                                  setState(() {
+                                    age++;
+                                  });
+                                },
+                              ),
+                            ],
+                          ),
+                        ],
+                      )
+                  ),
+                ),
               ],
             ),
           ),
-          Container(
-            color: bottomContainerColor,
-            margin: EdgeInsets.only(top: 10.0),
-            width: double.infinity,
-            height: bottomContainerHeight,
+          BottomButton(
+            onTap: () {
+              Navigator.push(context, MaterialPageRoute(builder: (context) => ResultsPage()));
+            },
+            buttonTitle: 'CALCULATE',
           ),
         ],
       )
     );
   }
 }
+
 
 

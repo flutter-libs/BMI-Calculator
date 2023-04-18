@@ -11,7 +11,6 @@ class BMICalculator extends StatelessWidget {
       theme: ThemeData(
         colorScheme: ColorScheme.fromSwatch().copyWith(
           primary: const Color(0xFF0A0E21),
-          secondary: Colors.purpleAccent,
         ),
         scaffoldBackgroundColor: const Color(0xFF0A0E21),
         textTheme: const TextTheme(
